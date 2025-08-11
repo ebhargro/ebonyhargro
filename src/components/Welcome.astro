@@ -1,0 +1,136 @@
+---
+import background from "../assets/background.jpg";
+import photo from "../assets/photo.jpeg";
+import ActionButton from "./ActionButton.jsx";
+---
+
+<div id="container">
+  <img id="background" src={background.src} alt="" fetchpriority="high" />
+  <main>
+    <section id="hero">
+      <a href="https://www.linkedin.com/in/ebonyhargro">
+        <img src={photo.src} alt="Photo of Ebony Hargro" class="photo-button" />
+      </a>
+
+      <h1>hi, I'm Ebony.</h1>
+      <h2>check out my work.</h2>
+
+      <section class="button-container">
+        <div class="page-button" style="--angle: 270deg">
+          <div class="page-button__inner">
+            <ActionButton client:load label="programmer" />
+          </div>
+        </div>
+        <div class="page-button" style="--angle: 210deg">
+          <div class="page-button__inner">
+            <ActionButton client:load label="teacher" />
+          </div>
+        </div>
+        <div class="page-button" style="--angle: 330deg">
+          <div class="page-button__inner">
+            <ActionButton client:load label="writer" />
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+</div>
+
+<style>
+  #background {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    filter: blur(100px);
+  }
+
+  #container {
+    font-family: Inter, system-ui, Arial, sans-serif;
+    min-height: 100vh;
+  }
+
+  main {
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+  }
+
+  #hero {
+    --photo: clamp(80px, 40vw, 180px);
+    --btn-h: 40px;
+    --gap: 30px;
+    position: relative;
+    aspect-ratio: 1;
+    margin: 2rem auto;
+    display: grid;
+    place-items: center;
+    --photo-b: 0.1px;
+  }
+
+  .photo-button {
+    width: var(--photo);
+    height: var(--photo);
+    border-radius: 50%;
+    border: 2px solid white;
+    object-fit: cover;
+    display: block;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  }
+
+  h1 {
+    font-size: 22px;
+    margin: 0.25em 0 0;
+    color: #1f2933;
+  }
+
+  .button-container {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .page-button {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: var(--btn-h);
+    transform: translate(-50%, -50%) rotate(var(--angle, 0deg))
+      translateX(
+        calc(
+          (var(--photo) / 2) + var(--photo-b, 0px) + (var(--btn-h) / 2) +
+            var(--gap)
+        )
+      );
+    transform-origin: center;
+    pointer-events: auto;
+  }
+
+  .page-button__inner {
+    display: inline-flex;
+    align-items: center;
+    height: var(--btn-h);
+    transform: rotate(90deg);
+    transform-origin: center;
+  }
+
+  @media (max-width: 520px) {
+    #hero {
+      aspect-ratio: auto;
+      padding-bottom: 1rem;
+    }
+    .button-container {
+      position: static;
+      display: grid;
+      gap: 10px;
+      justify-items: center;
+      margin-top: 1rem;
+    }
+    .page-button,
+    .page-button__inner {
+      transform: none;
+      position: static;
+    }
+  }
+</style>
