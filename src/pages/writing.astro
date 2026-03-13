@@ -1,0 +1,93 @@
+---
+import Layout from "../layouts/Layout.astro";
+import background from "../assets/background.jpg";
+---
+
+<Layout>
+  <div id="page">
+    <img id="background" src={background.src} alt="" fetchpriority="high" />
+    <nav>
+      <a href="/" class="nav-back">← home</a>
+      <span class="nav-title">Writer</span>
+    </nav>
+    <section id="hero">
+      <p class="eyebrow">Writing</p>
+      <h1>I write about what I know.</h1>
+      <p class="subhead">Technical writing, industry perspective, and honest takes on what it takes to build engineering talent — and navigate tech as someone who wasn't supposed to be there.</p>
+    </section>
+    <section class="section">
+      <p class="section-label">Published — Code Newbie Chronicles</p>
+      <div class="posts-list">
+
+        <a href="https://www.codenewbiechronicles.com/blog/careers-are-made-in-hindsight" target="_blank" rel="noopener" class="post-card">
+          <div class="post-meta">Essay</div>
+          <h3>"Careers are Made in Hindsight" — My Unconventional Path to Software Engineering</h3>
+          <p>How discovering G|Code, an organization that teaches underrepresented women of color web development for free, ignited a passion for programming and a complete career pivot.</p>
+          <span class="post-link">Read →</span>
+        </a>
+
+        <a href="https://www.codenewbiechronicles.com/blog/free-resources" target="_blank" rel="noopener" class="post-card">
+          <div class="post-meta">Resource Guide</div>
+          <h3>Resources for Non-Traditional Software Engineers [FREE]</h3>
+          <p>A curated list of free resources — YouTube channels, newsletters, bootcamps, and apprenticeship programs — for engineers who came to tech through non-traditional paths.</p>
+          <span class="post-link">Read →</span>
+        </a>
+
+        <a href="https://www.codenewbiechronicles.com/blog/correlation-ones-data-science-for-all-empowerment-program-week-1-review" target="_blank" rel="noopener" class="post-card">
+          <div class="post-meta">Program Review</div>
+          <h3>Correlation One's Data Science for All Empowerment Program: Week 1 Review</h3>
+          <p>An inside look at DS4A, a 13-week data analytics training program from instructors at Harvard and MIT — merit-based, free, and open only to underrepresented minorities.</p>
+          <span class="post-link">Read →</span>
+        </a>
+
+        <a href="https://www.codenewbiechronicles.com/blog/oop-w-javascript-1-this-new-constructors" target="_blank" rel="noopener" class="post-card">
+          <div class="post-meta">Technical — Series</div>
+          <h3>Object Oriented Programming w/ JavaScript #1 | "this", "new" &amp; Constructors</h3>
+          <p>The first in a series breaking down OOP concepts in JavaScript — starting with constructors, the <code>new</code> keyword, and how <code>this</code> works in context.</p>
+          <span class="post-link">Read →</span>
+        </a>
+
+      </div>
+    </section>
+
+    <section class="section">
+      <p class="blog-cta-text">All posts live on <a href="https://www.codenewbiechronicles.com" target="_blank" rel="noopener" class="inline-link">Code Newbie Chronicles →</a></p>
+    </section>
+
+    <footer>
+      <a href="/" class="footer-back">← home</a>
+      <a href="https://www.codenewbiechronicles.com" target="_blank" rel="noopener" class="footer-link">Blog →</a>
+    </footer>
+  </div>
+</Layout>
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  #background { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; filter: blur(100px); object-fit: cover; }
+  #page { font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Arial, sans-serif; color: #1f2933; min-height: 100vh; max-width: 900px; margin: 0 auto; padding: 0 1.5rem; }
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 0; border-bottom: 1px solid rgba(17,24,39,0.08); }
+  .nav-back { font-size: 13px; color: #6b7280; text-decoration: none; transition: color 150ms ease; }
+  .nav-back:hover { color: #1f2933; }
+  .nav-title { font-size: 13px; font-weight: 600; color: #1f2933; letter-spacing: 0.04em; text-transform: uppercase; }
+  #hero { padding: 4.5rem 0 3rem; max-width: 640px; }
+  .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #9ca3af; margin: 0 0 1rem; }
+  h1 { font-size: clamp(2rem, 5.5vw, 3.2rem); font-weight: 700; letter-spacing: -0.03em; color: #111827; margin: 0 0 1.25rem; line-height: 1.12; }
+  .subhead { font-size: 1.05rem; line-height: 1.65; color: #374151; margin: 0; }
+  .section { padding: 3.5rem 0; border-top: 1px solid rgba(17,24,39,0.07); }
+  .section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #9ca3af; margin: 0 0 1.5rem; }
+  .posts-list { display: flex; flex-direction: column; gap: 1rem; max-width: 680px; }
+  .post-card { display: flex; flex-direction: column; gap: 0.5rem; background: rgba(248,250,252,0.72); border: 1px solid rgba(17,24,39,0.09); border-radius: 16px; backdrop-filter: blur(12px) saturate(1.1); -webkit-backdrop-filter: blur(12px) saturate(1.1); box-shadow: 0 2px 12px rgba(17,24,39,0.07), inset 0 1px 0 rgba(255,255,255,0.65); padding: 1.5rem 1.75rem; text-decoration: none; color: inherit; transition: box-shadow 200ms ease, transform 180ms ease; }
+  .post-card:hover { box-shadow: 0 8px 28px rgba(17,24,39,0.12), inset 0 1px 0 rgba(255,255,255,0.7); transform: translateY(-2px); }
+  .post-meta { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #9ca3af; }
+  .post-card h3 { font-size: 0.975rem; font-weight: 700; color: #111827; margin: 0; letter-spacing: -0.01em; line-height: 1.35; }
+  .post-card p { font-size: 0.875rem; line-height: 1.65; color: #4b5563; margin: 0; }
+  .post-card code { font-size: 0.82rem; background: rgba(17,24,39,0.06); border-radius: 4px; padding: 1px 5px; font-family: ui-monospace, monospace; }
+  .post-link { font-size: 12px; font-weight: 600; color: #6b7280; margin-top: 0.25rem; transition: color 150ms ease; }
+  .post-card:hover .post-link { color: #111827; }
+  .blog-cta-text { font-size: 0.9rem; color: #6b7280; margin: 0; }
+  .inline-link { color: #111827; font-weight: 600; text-underline-offset: 3px; }
+  .inline-link:hover { color: #374151; }
+  footer { display: flex; align-items: center; justify-content: space-between; padding: 2rem 0; border-top: 1px solid rgba(17,24,39,0.07); margin-top: 1rem; }
+  .footer-back, .footer-link { font-size: 13px; color: #9ca3af; text-decoration: none; transition: color 150ms ease; }
+  .footer-back:hover, .footer-link:hover { color: #1f2933; }
+</style>

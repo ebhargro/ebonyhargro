@@ -8,27 +8,22 @@ import ActionButton from "./ActionButton.jsx";
   <img id="background" src={background.src} alt="" fetchpriority="high" />
   <main>
     <section id="hero">
-      <a href="https://www.linkedin.com/in/ebonyhargro">
+      <a href="https://www.linkedin.com/in/ebonyhargro" target="_blank" rel="noopener">
         <img src={photo.src} alt="Photo of Ebony Hargro" class="photo-button" />
       </a>
 
-      <h1>hi, I'm Ebony.</h1>
+      <h1>hi, I'm <a href="https://www.linkedin.com/in/ebonyhargro" target="_blank" rel="noopener" class="name-link">Ebony</a>.</h1>
       <h2>check out my work.</h2>
 
       <section class="button-container">
-        <div class="page-button" style="--angle: 270deg">
-          <div class="page-button__inner">
-            <ActionButton client:load label="programmer" />
-          </div>
-        </div>
         <div class="page-button" style="--angle: 210deg">
           <div class="page-button__inner">
-            <ActionButton client:load label="teacher" />
+            <ActionButton client:load label="builder" href="/programming" />
           </div>
         </div>
         <div class="page-button" style="--angle: 330deg">
           <div class="page-button__inner">
-            <ActionButton client:load label="writer" />
+            <ActionButton client:load label="consultant" href="/consulting" />
           </div>
         </div>
       </section>
@@ -59,8 +54,8 @@ import ActionButton from "./ActionButton.jsx";
 
   #hero {
     --photo: clamp(80px, 40vw, 180px);
-    --btn-h: 40px;
-    --gap: 30px;
+    --btn-h: 54px;
+    --gap: 26px;
     position: relative;
     aspect-ratio: 1;
     margin: 2rem auto;
@@ -77,12 +72,40 @@ import ActionButton from "./ActionButton.jsx";
     object-fit: cover;
     display: block;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transition: transform 200ms ease, box-shadow 200ms ease;
+  }
+
+  .photo-button:hover {
+    transform: scale(1.04);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
   }
 
   h1 {
     font-size: 22px;
     margin: 0.25em 0 0;
-    color: #1f2933;
+    color: #1a2e1f;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .name-link {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1.5px solid rgba(45, 74, 62, 0.35);
+    padding-bottom: 1px;
+    transition: border-color 150ms ease, color 150ms ease;
+  }
+
+  .name-link:hover {
+    color: #2d4a3e;
+    border-bottom-color: #2d4a3e;
+  }
+
+  h2 {
+    color: #3d5244;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
   }
 
   .button-container {
@@ -115,6 +138,7 @@ import ActionButton from "./ActionButton.jsx";
     transform-origin: center;
   }
 
+  /* ── Mobile ──────────────────────────────────────────── */
   @media (max-width: 520px) {
     #hero {
       aspect-ratio: auto;

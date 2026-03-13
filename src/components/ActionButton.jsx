@@ -3,14 +3,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MousePointer } from "lucide-react";
 import styles from "./ActionButton.module.css";
 
-export default function ActionButton({ label }) {
+export default function ActionButton({ label, href }) {
   const [isHovered, setIsHovered] = useState(false);
   const [isActive, setIsActive] = useState(false);
 
   const cursors = useMemo(() => {
     const out = [];
-    const circles = [10, 60];
-    const cursorsPerCircle = [2, 4];
+    const circles = [16, 90];
+    const cursorsPerCircle = [2, 5];
     circles.forEach((radius, ci) => {
       const count = cursorsPerCircle[ci];
       for (let i = 0; i < count; i++) {
@@ -52,7 +52,13 @@ export default function ActionButton({ label }) {
       className={styles.button}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      onClick={() => setIsActive((v) => !v)}
+      onClick={() => {
+        if (href) {
+          window.location.href = href;
+        } else {
+          setIsActive((v) => !v);
+        }
+      }}
     >
       <div className={styles.gradientOverlay} />
 

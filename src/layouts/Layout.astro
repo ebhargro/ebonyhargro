@@ -1,3 +1,9 @@
+---
+const {
+  title = "Ebony Hargro",
+  description = "Software engineer, technical educator, and consultant."
+} = Astro.props;
+---
 <!doctype html>
 <html lang="en">
   <head>
@@ -5,7 +11,8 @@
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>ebony hargro</title>
+    <meta name="description" content={description} />
+    <title>{title}</title>
   </head>
   <body>
     <slot />

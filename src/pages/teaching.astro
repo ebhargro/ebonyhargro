@@ -1,0 +1,85 @@
+---
+import Layout from "../layouts/Layout.astro";
+import background from "../assets/background.jpg";
+---
+
+<Layout>
+  <div id="page">
+    <img id="background" src={background.src} alt="" fetchpriority="high" />
+    <nav>
+      <a href="/" class="nav-back">← home</a>
+      <span class="nav-title">Teacher</span>
+    </nav>
+    <section id="hero">
+      <p class="eyebrow">Education</p>
+      <h1>I teach engineers how to build.</h1>
+      <p class="subhead">Curriculum designer and lead instructor focused on full-stack development and growing underrepresented talent in tech. I've designed programs that work and taught cohorts that ship.</p>
+    </section>
+    <section class="section">
+      <p class="section-label">Teaching Experience</p>
+      <div class="cards-grid">
+        <div class="card">
+          <p class="card-company">CodePath</p>
+          <h3>Full Stack Web Lead Instructor</h3>
+          <p>Planned and delivered curriculum on React, Node.js, Express, PostgreSQL, Prisma, and RESTful APIs to a cohort of 25+ students. Led hands-on labs, live demos, and technical lectures.</p>
+        </div>
+        <div class="card">
+          <p class="card-company">Groundwork Technical Solutions</p>
+          <h3>Technical Curriculum Design</h3>
+          <p>Designing and building technical training programs for non-profits and mission-driven organizations — from learning objectives through instructor guides.</p>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <p class="section-label">Curriculum Topics</p>
+      <div class="tags">
+        <span class="tag">Full-Stack Architecture</span>
+        <span class="tag">React &amp; Node.js</span>
+        <span class="tag">API Design</span>
+        <span class="tag">Databases</span>
+        <span class="tag">Technical Interview Prep</span>
+        <span class="tag">Debugging</span>
+        <span class="tag">Engineering Best Practices</span>
+      </div>
+    </section>
+    <section class="section cta-section">
+      <p class="body-text">Interested in curriculum work or workshops for your organization?</p>
+      <a href="/consulting" class="cta-button">See Consulting Services →</a>
+    </section>
+    <footer>
+      <a href="/" class="footer-back">← home</a>
+      <a href="/consulting" class="footer-link">Consulting →</a>
+    </footer>
+  </div>
+</Layout>
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  #background { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; filter: blur(100px); object-fit: cover; }
+  #page { font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Arial, sans-serif; color: #1f2933; min-height: 100vh; max-width: 900px; margin: 0 auto; padding: 0 1.5rem; }
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 0; border-bottom: 1px solid rgba(17,24,39,0.08); }
+  .nav-back { font-size: 13px; color: #6b7280; text-decoration: none; transition: color 150ms ease; }
+  .nav-back:hover { color: #1f2933; }
+  .nav-title { font-size: 13px; font-weight: 600; color: #1f2933; letter-spacing: 0.04em; text-transform: uppercase; }
+  #hero { padding: 4.5rem 0 3rem; max-width: 640px; }
+  .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #9ca3af; margin: 0 0 1rem; }
+  h1 { font-size: clamp(2rem, 5.5vw, 3.2rem); font-weight: 700; letter-spacing: -0.03em; color: #111827; margin: 0 0 1.25rem; line-height: 1.12; }
+  .subhead { font-size: 1.05rem; line-height: 1.65; color: #374151; margin: 0; }
+  .section { padding: 3.5rem 0; border-top: 1px solid rgba(17,24,39,0.07); }
+  .section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #9ca3af; margin: 0 0 1.5rem; }
+  .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.25rem; }
+  .card { background: rgba(248,250,252,0.72); border: 1px solid rgba(17,24,39,0.09); border-radius: 16px; backdrop-filter: blur(12px) saturate(1.1); -webkit-backdrop-filter: blur(12px) saturate(1.1); box-shadow: 0 2px 12px rgba(17,24,39,0.07), inset 0 1px 0 rgba(255,255,255,0.65); padding: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem; transition: box-shadow 200ms ease, transform 180ms ease; }
+  .card:hover { box-shadow: 0 8px 28px rgba(17,24,39,0.12), inset 0 1px 0 rgba(255,255,255,0.7); transform: translateY(-2px); }
+  .card-company { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; color: #9ca3af; text-transform: uppercase; margin: 0; }
+  .card h3 { font-size: 1rem; font-weight: 700; color: #111827; margin: 0; letter-spacing: -0.01em; line-height: 1.3; }
+  .card p { font-size: 0.88rem; line-height: 1.65; color: #4b5563; margin: 0; }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .tag { font-size: 12px; color: #374151; background: rgba(245,247,250,0.85); border: 1px solid rgba(17,24,39,0.1); border-radius: 999px; padding: 5px 13px; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+  .cta-section { display: flex; flex-direction: column; gap: 1.25rem; }
+  .body-text { font-size: 1rem; line-height: 1.65; color: #374151; margin: 0; }
+  .cta-button { display: inline-flex; align-items: center; gap: 6px; padding: 11px 22px; border-radius: 999px; font-size: 14px; font-weight: 600; color: #fff; background: #111827; border: none; text-decoration: none; cursor: pointer; box-shadow: 0 4px 14px rgba(17,24,39,0.35); transition: background 160ms ease, box-shadow 200ms ease, transform 120ms ease; align-self: flex-start; }
+  .cta-button:hover { background: #1f2937; box-shadow: 0 8px 24px rgba(17,24,39,0.45); transform: translateY(-1px); }
+  footer { display: flex; align-items: center; justify-content: space-between; padding: 2rem 0; border-top: 1px solid rgba(17,24,39,0.07); margin-top: 1rem; }
+  .footer-back, .footer-link { font-size: 13px; color: #9ca3af; text-decoration: none; transition: color 150ms ease; }
+  .footer-back:hover, .footer-link:hover { color: #1f2933; }
+</style>
