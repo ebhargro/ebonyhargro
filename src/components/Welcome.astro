@@ -15,18 +15,10 @@ import ActionButton from "./ActionButton.jsx";
       <h1>hi, I'm <a href="https://www.linkedin.com/in/ebonyhargro" target="_blank" rel="noopener" class="name-link">Ebony</a>.</h1>
       <h2>check out my work.</h2>
 
-      <section class="button-container">
-        <div class="page-button" style="--angle: 210deg">
-          <div class="page-button__inner">
-            <ActionButton client:load label="builder" href="/programming" />
-          </div>
-        </div>
-        <div class="page-button" style="--angle: 330deg">
-          <div class="page-button__inner">
-            <ActionButton client:load label="consultant" href="/consulting" />
-          </div>
-        </div>
-      </section>
+      <div class="button-row">
+        <ActionButton client:load label="builder" href="/programming" />
+        <ActionButton client:load label="consultant" href="/consulting" />
+      </div>
     </section>
   </main>
 </div>
@@ -37,8 +29,23 @@ import ActionButton from "./ActionButton.jsx";
     inset: 0;
     width: 100%;
     height: 100%;
+    z-index: -2;
+    filter: blur(80px) saturate(1.2);
+    object-fit: cover;
+  }
+
+  /* Soft vignette pulls focus to center */
+  #container::before {
+    content: '';
+    position: fixed;
+    inset: 0;
     z-index: -1;
-    filter: blur(100px);
+    background: radial-gradient(
+      ellipse 70% 70% at 50% 48%,
+      transparent 30%,
+      rgba(0, 0, 0, 0.08) 100%
+    );
+    pointer-events: none;
   }
 
   #container {
@@ -54,35 +61,39 @@ import ActionButton from "./ActionButton.jsx";
 
   #hero {
     --photo: clamp(80px, 40vw, 180px);
-    --btn-h: 54px;
-    --gap: 26px;
-    position: relative;
-    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    text-align: center;
     margin: 2rem auto;
-    display: grid;
-    place-items: center;
-    --photo-b: 0.1px;
   }
 
   .photo-button {
     width: var(--photo);
     height: var(--photo);
     border-radius: 50%;
-    border: 2px solid white;
+    border: 3px solid rgba(255, 255, 255, 0.96);
     object-fit: cover;
     display: block;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    transition: transform 200ms ease, box-shadow 200ms ease;
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.30),
+      0 8px 24px rgba(0, 0, 0, 0.18),
+      0 24px 56px rgba(0, 0, 0, 0.12);
+    transition: transform 220ms ease, box-shadow 220ms ease;
   }
 
   .photo-button:hover {
-    transform: scale(1.04);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+    transform: scale(1.03);
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.40),
+      0 12px 32px rgba(0, 0, 0, 0.24),
+      0 32px 72px rgba(0, 0, 0, 0.14);
   }
 
   h1 {
     font-size: 22px;
-    margin: 0.25em 0 0;
+    margin: 0.6em 0 0;
     color: #1a2e1f;
     font-weight: 700;
     letter-spacing: -0.02em;
@@ -106,55 +117,13 @@ import ActionButton from "./ActionButton.jsx";
     font-size: 14px;
     font-weight: 500;
     letter-spacing: -0.01em;
+    margin: 0.3em 0 0;
   }
 
-  .button-container {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-  }
-
-  .page-button {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    height: var(--btn-h);
-    transform: translate(-50%, -50%) rotate(var(--angle, 0deg))
-      translateX(
-        calc(
-          (var(--photo) / 2) + var(--photo-b, 0px) + (var(--btn-h) / 2) +
-            var(--gap)
-        )
-      );
-    transform-origin: center;
-    pointer-events: auto;
-  }
-
-  .page-button__inner {
-    display: inline-flex;
-    align-items: center;
-    height: var(--btn-h);
-    transform: rotate(90deg);
-    transform-origin: center;
-  }
-
-  /* ── Mobile ──────────────────────────────────────────── */
-  @media (max-width: 520px) {
-    #hero {
-      aspect-ratio: auto;
-      padding-bottom: 1rem;
-    }
-    .button-container {
-      position: static;
-      display: grid;
-      gap: 10px;
-      justify-items: center;
-      margin-top: 1rem;
-    }
-    .page-button,
-    .page-button__inner {
-      transform: none;
-      position: static;
-    }
+  .button-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 1.5rem;
+    justify-content: center;
   }
 </style>

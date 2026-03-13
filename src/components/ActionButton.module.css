@@ -1,11 +1,11 @@
 :root {
   --ink: #1A2E1F;
-  --btn-surface: rgba(237, 242, 232, 0.90);
-  --btn-surface-hover: rgba(224, 235, 218, 0.96);
-  --btn-surface-active: rgba(210, 225, 205, 0.72);
-  --btn-stroke: rgba(45, 74, 62, 0.18);
-  --btn-stroke-hover: rgba(45, 74, 62, 0.32);
-  --btn-highlight: rgba(255, 255, 255, 0.75);
+  --btn-surface: rgba(255, 255, 255, 0.80);
+  --btn-surface-hover: rgba(255, 255, 255, 0.95);
+  --btn-surface-active: rgba(248, 251, 248, 0.70);
+  --btn-stroke: rgba(255, 255, 255, 0.92);
+  --btn-stroke-hover: rgba(255, 255, 255, 1);
+  --btn-highlight: rgba(255, 255, 255, 1);
 }
 
 
@@ -15,24 +15,26 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 10px 26px;
+  padding: 12px 30px;
   border-radius: 999px;
 
   color: var(--ink);
   background: var(--btn-surface);
   border: 1px solid var(--btn-stroke);
-  backdrop-filter: blur(10px) saturate(1.15);
-  -webkit-backdrop-filter: blur(10px) saturate(1.15);
+  backdrop-filter: blur(24px) saturate(1.6) brightness(1.08);
+  -webkit-backdrop-filter: blur(24px) saturate(1.6) brightness(1.08);
 
   box-shadow:
-    0 10px 28px rgba(26, 46, 31, 0.28),
-    inset 0 1px 0 var(--btn-highlight);
+    0 2px 4px rgba(0, 0, 0, 0.04),
+    0 8px 20px rgba(0, 0, 0, 0.14),
+    0 28px 56px rgba(0, 0, 0, 0.08),
+    inset 0 1.5px 0 var(--btn-highlight);
 
   transition:
-    background 160ms ease,
-    border-color 160ms ease,
-    box-shadow 200ms ease,
-    transform 120ms ease;
+    background 180ms ease,
+    border-color 180ms ease,
+    box-shadow 220ms ease,
+    transform 130ms ease;
 
   cursor: pointer;
   user-select: none;
@@ -47,15 +49,19 @@
   background: var(--btn-surface-hover);
   border-color: var(--btn-stroke-hover);
   box-shadow:
-    0 16px 36px rgba(26, 46, 31, 0.42),
-    inset 0 1px 0 var(--btn-highlight);
+    0 2px 4px rgba(0, 0, 0, 0.04),
+    0 12px 28px rgba(0, 0, 0, 0.20),
+    0 40px 72px rgba(0, 0, 0, 0.10),
+    inset 0 1.5px 0 var(--btn-highlight);
+  transform: translateY(-1px);
 }
 
 .button:active {
   background: var(--btn-surface-active);
-  transform: translateZ(0) scale(0.98);
+  transform: scale(0.97);
   box-shadow:
-    0 6px 18px rgba(26, 46, 31, 0.38),
+    0 2px 6px rgba(0, 0, 0, 0.10),
+    0 6px 16px rgba(0, 0, 0, 0.14),
     inset 0 0 0 rgba(255, 255, 255, 0);
 }
 
@@ -63,22 +69,23 @@
 .button:focus-visible {
   outline: none;
   box-shadow:
-    0 0 0 2px #FFFFFF,
-    0 0 0 4px #2D4A3E,
-    0 10px 28px rgba(26, 46, 31, 0.28);
+    0 0 0 2.5px #FFFFFF,
+    0 0 0 4.5px #2D4A3E,
+    0 8px 20px rgba(0, 0, 0, 0.14);
 }
 
 
+/* Soft glass gleam — top edge catches light */
 .gradientOverlay {
   position: absolute;
   inset: 0;
   pointer-events: none;
   border-radius: 999px;
   background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.18) 0%,
-    rgba(255, 255, 255, 0.07) 40%,
-    rgba(255, 255, 255, 0.00) 100%
+    160deg,
+    rgba(255, 255, 255, 0.55) 0%,
+    rgba(255, 255, 255, 0.20) 30%,
+    rgba(255, 255, 255, 0.00) 60%
   );
 }
 
@@ -87,7 +94,7 @@
   position: absolute;
   inset: 0;
   border-radius: 999px;
-  box-shadow: inset 0 0 12px rgba(122, 158, 126, 0.10);
+  box-shadow: inset 0 0 16px rgba(255, 255, 255, 0.20);
   pointer-events: none;
 }
 
@@ -95,18 +102,22 @@
 .pulse { position: absolute; inset: 0; border-radius: 999px; opacity: 0; will-change: transform, opacity, box-shadow; }
 .cursorsRoot { position: absolute; pointer-events: none; will-change: transform; z-index: 10; }
 .cursor { position: absolute; pointer-events: none; will-change: transform, opacity; }
-.cursorIcon { width: 10px; height: 10px; color: #2D4A3E; filter: drop-shadow(0 0 5px rgba(122, 158, 126, 0.7)); }
+.cursorIcon {
+  width: 10px;
+  height: 10px;
+  color: #2D4A3E;
+  filter: drop-shadow(0 0 4px rgba(45, 74, 62, 0.55));
+}
 
 
 .label {
   position: relative;
   z-index: 10;
   color: var(--ink);
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.4);
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: -0.3px;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 550;
+  letter-spacing: 0.02em;
   line-height: 1.4;
   text-align: center;
   white-space: nowrap;
@@ -115,11 +126,9 @@
 
 @supports not (backdrop-filter: blur(8px)) {
   .button {
-    background: #2D4A3E;
-    color: #EDF2E8;
-    border-color: rgba(122, 158, 126, 0.30);
-    box-shadow: 0 10px 28px rgba(26, 46, 31, 0.30);
+    background: rgba(255, 255, 255, 0.96);
+    border-color: rgba(255, 255, 255, 0.80);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
   }
-  .button:hover { background: #3D5244; }
-  .label { color: #EDF2E8; text-shadow: none; }
+  .button:hover { background: #fff; }
 }
